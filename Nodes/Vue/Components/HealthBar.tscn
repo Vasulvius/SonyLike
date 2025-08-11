@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkel4etux3r6m"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3rivk"]
+bg_color = Color(0.767316, 0.125995, 0.296587, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rs20u"]
+bg_color = Color(0.157806, 0.592264, 0.398626, 1)
+
+[node name="CanvasLayer" type="ProgressBar"]
+offset_right = 100.0
+offset_bottom = 15.0
+theme_override_styles/background = SubResource("StyleBoxFlat_3rivk")
+theme_override_styles/fill = SubResource("StyleBoxFlat_rs20u")
+step = 1.0
+value = 40.0
+show_percentage = false

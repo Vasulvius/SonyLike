@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://o3k5ud8sncye"]
+
+[ext_resource type="Script" uid="uid://boq22pequ7g4w" path="res://Scripts/Characters/BaseCharacter.cs" id="1_o6fon"]
+[ext_resource type="Texture2D" uid="uid://xly8ocl4p2yi" path="res://icon.svg" id="2_ma43k"]
+[ext_resource type="PackedScene" uid="uid://dyh6w5lupu65x" path="res://Nodes/Vue/Status.tscn" id="3_twwmq"]
+
+[node name="base_character" type="Node2D" node_paths=PackedStringArray("_statusVue")]
+script = ExtResource("1_o6fon")
+_statusVue = NodePath("Status")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_ma43k")
+
+[node name="Status" parent="." instance=ExtResource("3_twwmq")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_top = -125.0
+offset_bottom = -125.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
