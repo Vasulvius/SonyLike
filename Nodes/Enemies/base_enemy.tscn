@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://mll1r7u4noi3"]
+
+[ext_resource type="Script" uid="uid://cigha02rrf1ju" path="res://Scripts/Enemies/BaseEnemy.cs" id="1_ocrqq"]
+[ext_resource type="Texture2D" uid="uid://xly8ocl4p2yi" path="res://icon.svg" id="2_41cqj"]
+[ext_resource type="PackedScene" uid="uid://dyh6w5lupu65x" path="res://Nodes/Vue/Status.tscn" id="3_fqsfe"]
+
+[node name="base_enemy" type="Node2D" node_paths=PackedStringArray("_statusVue")]
+script = ExtResource("1_ocrqq")
+_statusVue = NodePath("Status")
+
+[node name="Icon" type="Sprite2D" parent="."]
+modulate = Color(0.66, 0.165, 0.25575, 1)
+texture = ExtResource("2_41cqj")
+
+[node name="Status" parent="." instance=ExtResource("3_fqsfe")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_top = -130.0
+offset_bottom = -130.0
+grow_horizontal = 1
+grow_vertical = 1
