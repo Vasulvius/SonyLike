@@ -3,8 +3,8 @@ using System;
 
 public partial class SelectionArea : Area2D
 {
-    [Export] private Sprite2D _ring;
-    [Export] private Panel _panel;
+    [Export] private Ring _ring;
+    [Export] private AbilitiesPanel _panel;
     public override void _Ready()
     {
         _ring.Visible = false;
@@ -12,12 +12,12 @@ public partial class SelectionArea : Area2D
     }
     private void OnMouseEntered()
     {
-        ToggleRingVisibility();
+        _ring.ToggleVisibility();
     }
 
     private void OnMouseExited()
     {
-        ToggleRingVisibility();
+        _ring.ToggleVisibility();
     }
 
     private void OnInputEvent(Node viewport, InputEvent @event, int shapeIdx)
@@ -26,18 +26,8 @@ public partial class SelectionArea : Area2D
         {
             if (mouseButtonEvent.IsPressed())
             {
-                TogglePanelVisibility();
+                _panel.ToggleVisibility();
             }
         }
-    }
-
-    private void ToggleRingVisibility()
-    {
-        _ring.Visible = !_ring.Visible;
-    }
-
-    private void TogglePanelVisibility()
-    {
-        _panel.Visible = !_panel.Visible;
     }
 }

@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://fbvyndo7cpx1"]
+[gd_scene load_steps=7 format=3 uid="uid://fbvyndo7cpx1"]
 
+[ext_resource type="Script" uid="uid://bn871d4iqlv2d" path="res://Scripts/Vue/Selector/Selector.cs" id="1_0jvxn"]
 [ext_resource type="Texture2D" uid="uid://gdstvlye65wh" path="res://Ressources/Ring.png" id="1_okdcl"]
-[ext_resource type="Script" uid="uid://dhi332thg2qgn" path="res://Scripts/Vue/Selector.cs" id="1_wjxqc"]
 [ext_resource type="Script" uid="uid://bxaigu46apr3e" path="res://Scripts/Enemies/SelectionArea.cs" id="2_vfqf5"]
-[ext_resource type="Script" uid="uid://beomxbis7ppwj" path="res://Scripts/Vue/AbilitiesPanel.cs" id="3_4umdp"]
+[ext_resource type="Script" uid="uid://bgcb0b34fwq4e" path="res://Scripts/Vue/Selector/Components/Ring.cs" id="3_0kc66"]
+[ext_resource type="Script" uid="uid://cwj4ssy78oqry" path="res://Scripts/Vue/Selector/Components/AbilitiesPanel.cs" id="5_0jvxn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4umdp"]
 radius = 42.19
@@ -15,10 +16,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_wjxqc")
+scale = Vector2(0.995716, 1)
+script = ExtResource("1_0jvxn")
 
 [node name="Ring" type="Sprite2D" parent="."]
 texture = ExtResource("1_okdcl")
+script = ExtResource("3_0kc66")
 
 [node name="Area2D" type="Area2D" parent="." node_paths=PackedStringArray("_ring", "_panel")]
 script = ExtResource("2_vfqf5")
@@ -34,7 +37,7 @@ offset_left = -73.0
 offset_top = -69.0
 offset_right = 74.0
 offset_bottom = 69.0
-script = ExtResource("3_4umdp")
+script = ExtResource("5_0jvxn")
 
 [node name="CloseButton" type="Button" parent="Panel"]
 layout_mode = 1
@@ -70,4 +73,4 @@ text = "Strong attack"
 [connection signal="input_event" from="Area2D" to="Area2D" method="OnInputEvent"]
 [connection signal="mouse_entered" from="Area2D" to="Area2D" method="OnMouseEntered"]
 [connection signal="mouse_exited" from="Area2D" to="Area2D" method="OnMouseExited"]
-[connection signal="pressed" from="Panel/CloseButton" to="Area2D" method="TogglePanelVisibility"]
+[connection signal="pressed" from="Panel/CloseButton" to="Panel" method="ToggleVisibility"]

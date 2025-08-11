@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dyh6w5lupu65x"]
 
-[ext_resource type="Script" uid="uid://bvqqyd06cendc" path="res://Scripts/Vue/Status.cs" id="1_usvje"]
+[ext_resource type="Script" uid="uid://c5hk6howcm4iw" path="res://Scripts/Vue/Status/Status.cs" id="1_usvje"]
 [ext_resource type="PackedScene" uid="uid://bkel4etux3r6m" path="res://Nodes/Vue/Components/HealthBar.tscn" id="2_vlcpk"]
 
 [node name="Status" type="Control" node_paths=PackedStringArray("_healthBar")]
