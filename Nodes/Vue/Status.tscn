@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dyh6w5lupu65x"]
 
-[ext_resource type="Script" uid="uid://bvqqyd06cendc" path="res://Scripts/Vue/Status.cs" id="1_70fly"]
-[ext_resource type="PackedScene" uid="uid://bkel4etux3r6m" path="res://Nodes/Vue/Components/HealthBar.tscn" id="1_jku4e"]
+[ext_resource type="Script" uid="uid://bvqqyd06cendc" path="res://Scripts/Vue/Status.cs" id="1_usvje"]
+[ext_resource type="PackedScene" uid="uid://bkel4etux3r6m" path="res://Nodes/Vue/Components/HealthBar.tscn" id="2_vlcpk"]
 
 [node name="Status" type="Control" node_paths=PackedStringArray("_healthBar")]
 layout_mode = 3
@@ -10,10 +10,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_70fly")
+script = ExtResource("1_usvje")
 _healthBar = NodePath("CanvasLayer")
 
-[node name="CanvasLayer" parent="." instance=ExtResource("1_jku4e")]
+[node name="CanvasLayer" parent="." instance=ExtResource("2_vlcpk")]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5

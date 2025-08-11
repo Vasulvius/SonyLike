@@ -1,0 +1,73 @@
+[gd_scene load_steps=6 format=3 uid="uid://fbvyndo7cpx1"]
+
+[ext_resource type="Texture2D" uid="uid://gdstvlye65wh" path="res://Ressources/Ring.png" id="1_okdcl"]
+[ext_resource type="Script" uid="uid://dhi332thg2qgn" path="res://Scripts/Vue/Selector.cs" id="1_wjxqc"]
+[ext_resource type="Script" uid="uid://bxaigu46apr3e" path="res://Scripts/Enemies/SelectionArea.cs" id="2_vfqf5"]
+[ext_resource type="Script" uid="uid://beomxbis7ppwj" path="res://Scripts/Vue/AbilitiesPanel.cs" id="3_4umdp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4umdp"]
+radius = 42.19
+
+[node name="Selector" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wjxqc")
+
+[node name="Ring" type="Sprite2D" parent="."]
+texture = ExtResource("1_okdcl")
+
+[node name="Area2D" type="Area2D" parent="." node_paths=PackedStringArray("_ring", "_panel")]
+script = ExtResource("2_vfqf5")
+_ring = NodePath("../Ring")
+_panel = NodePath("../Panel")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_4umdp")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = -73.0
+offset_top = -69.0
+offset_right = 74.0
+offset_bottom = 69.0
+script = ExtResource("3_4umdp")
+
+[node name="CloseButton" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -20.0
+offset_bottom = 36.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0.794623, 0.282533, 0.258749, 1)
+theme_override_font_sizes/font_size = 20
+text = "x"
+flat = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Normal attack"
+
+[node name="Button2" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Strong attack"
+
+[connection signal="input_event" from="Area2D" to="Area2D" method="OnInputEvent"]
+[connection signal="mouse_entered" from="Area2D" to="Area2D" method="OnMouseEntered"]
+[connection signal="mouse_exited" from="Area2D" to="Area2D" method="OnMouseExited"]
+[connection signal="pressed" from="Panel/CloseButton" to="Area2D" method="TogglePanelVisibility"]
