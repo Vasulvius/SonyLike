@@ -27,6 +27,7 @@ public partial class SelectionArea : Area2D
             if (mouseButtonEvent.IsPressed())
             {
                 _panel.ToggleVisibility();
+                GetParent<Selector>().SetSelectedTarget();
             }
         }
     }

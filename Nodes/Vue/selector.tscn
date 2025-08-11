@@ -74,3 +74,4 @@ text = "Strong attack"
 [connection signal="mouse_entered" from="Area2D" to="Area2D" method="OnMouseEntered"]
 [connection signal="mouse_exited" from="Area2D" to="Area2D" method="OnMouseExited"]
 [connection signal="pressed" from="Panel/CloseButton" to="Panel" method="ToggleVisibility"]
+[connection signal="pressed" from="Panel/VBoxContainer/Button" to="." method="DoSimpleAttack"]
