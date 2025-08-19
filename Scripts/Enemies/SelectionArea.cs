@@ -12,12 +12,12 @@ public partial class SelectionArea : Area2D
     }
     private void OnMouseEntered()
     {
-        _ring.ToggleVisibility();
+        _ring.Visible = true;
     }
 
     private void OnMouseExited()
     {
-        _ring.ToggleVisibility();
+        _ring.Visible = false;
     }
 
     private void OnInputEvent(Node viewport, InputEvent @event, int shapeIdx)
@@ -26,9 +26,15 @@ public partial class SelectionArea : Area2D
         {
             if (mouseButtonEvent.IsPressed())
             {
-                _panel.ToggleVisibility();
+                _panel.Visible = true;
                 GetParent<Selector>().SetSelectedTarget();
             }
         }
+    }
+
+    private void HideSelectionArea()
+    {
+        _ring.Visible = false;
+        _panel.Visible = false;
     }
 }
