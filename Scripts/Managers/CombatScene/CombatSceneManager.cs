@@ -1,4 +1,3 @@
-using System.Reflection.Metadata;
 using Godot;
 
 public partial class CombatSceneManager : Node
@@ -9,6 +8,7 @@ public partial class CombatSceneManager : Node
     public static CombatSceneManager Instance => _instance;
 
     // Combatants in the current scene
+    public Godot.Collections.Array<Node> Characters = new Godot.Collections.Array<Node>();
     private Godot.Collections.Array<Node> _combatants = new Godot.Collections.Array<Node>();
     private int _currentCombatantIndex = 0;
 
@@ -32,6 +32,7 @@ public partial class CombatSceneManager : Node
     private void InitializeCombatants()
     {
         // Get all nodes in the "Character" and "Enemy" groups
+        Characters = GetTree().GetNodesInGroup("Character");
         _combatants = GetTree().GetNodesInGroup("Character") + GetTree().GetNodesInGroup("Enemy");
 
         // TODO : Sort combatants regarding there stats
@@ -42,7 +43,6 @@ public partial class CombatSceneManager : Node
         if (_combatants[_currentCombatantIndex] is BaseEnemy enemy)
         {
             enemy.Act();
-            SelectNextCombatant();
         }
     }
 
@@ -52,7 +52,7 @@ public partial class CombatSceneManager : Node
         HandleCurrentCombatant();
     }
 
-    public void HandleCharacterEndTurn()
+    public void HandleEndTurn()
     {
         SelectNextCombatant();
     }

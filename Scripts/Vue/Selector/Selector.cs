@@ -16,9 +16,9 @@ public partial class Selector : Control
             return;
         }
 
-        int damage = 10;
+        int damage = 40;
         _selectedTarget.TakeDamage(damage);
 
-        CombatSceneManager.Instance.HandleCharacterEndTurn();
+        CombatSceneManager.Instance.HandleEndTurn();
     }
 }

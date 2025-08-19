@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Runtime;
 
 public partial class BaseEnemy : Node2D, IDamageable
 {
@@ -32,12 +33,23 @@ public partial class BaseEnemy : Node2D, IDamageable
 		GD.Print("Enemy has died.");
 	}
 
+	private Node SelectTarget()
+	{
+		return CombatSceneManager.Instance.Characters[0];
+	}
+
 	public void Act()
 	{
-		// Wait 1 second
-		
-		
-		// Example action: print a message
+		GD.Print("Enemy starts acting...");
+		var timer = GetTree().CreateTimer(1.0);
+		timer.Timeout += OnActComplete;
+	}
+
+	private void OnActComplete()
+	{
 		GD.Print("Enemy is acting.");
+		IDamageable target = SelectTarget() as IDamageable;
+		target.TakeDamage(10);
+		CombatSceneManager.Instance.HandleEndTurn();
 	}
 }
