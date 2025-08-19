@@ -1,5 +1,4 @@
 using Godot;
-using System;
 
 public partial class Selector : Control
 {
@@ -11,6 +10,15 @@ public partial class Selector : Control
     }
     public void DoSimpleAttack()
     {
-        CombatSceneManager.Instance.DoSimpleAttack(_selectedTarget);
+        if (_selectedTarget == null)
+        {
+            GD.Print("No target to attack.");
+            return;
+        }
+
+        int damage = 10;
+        _selectedTarget.TakeDamage(damage);
+
+        CombatSceneManager.Instance.HandleCharacterEndTurn();
     }
 }

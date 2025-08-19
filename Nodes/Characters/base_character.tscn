@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://xly8ocl4p2yi" path="res://icon.svg" id="2_ma43k"]
 [ext_resource type="PackedScene" uid="uid://dyh6w5lupu65x" path="res://Nodes/Vue/status.tscn" id="3_twwmq"]
 
-[node name="base_character" type="Node2D" node_paths=PackedStringArray("_statusVue")]
+[node name="base_character" type="Node2D" node_paths=PackedStringArray("_statusVue") groups=["Character"]]
 script = ExtResource("1_o6fon")
 _statusVue = NodePath("Status")
 

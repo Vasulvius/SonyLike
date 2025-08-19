@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dyh6w5lupu65x" path="res://Nodes/Vue/status.tscn" id="3_fqsfe"]
 [ext_resource type="PackedScene" uid="uid://fbvyndo7cpx1" path="res://Nodes/Vue/selector.tscn" id="4_5yuib"]
 
-[node name="base_enemy" type="Node2D" node_paths=PackedStringArray("_statusVue")]
+[node name="base_enemy" type="Node2D" node_paths=PackedStringArray("_statusVue") groups=["Enemy"]]
 script = ExtResource("1_ocrqq")
 _statusVue = NodePath("Status")
 

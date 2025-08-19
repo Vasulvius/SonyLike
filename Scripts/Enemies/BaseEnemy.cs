@@ -31,4 +31,13 @@ public partial class BaseEnemy : Node2D, IDamageable
 	{
 		GD.Print("Enemy has died.");
 	}
+
+	public void Act()
+	{
+		// Wait 1 second
+		
+		
+		// Example action: print a message
+		GD.Print("Enemy is acting.");
+	}
 }
