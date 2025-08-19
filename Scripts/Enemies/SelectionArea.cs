@@ -12,17 +12,23 @@ public partial class SelectionArea : Area2D
     }
     private void OnMouseEntered()
     {
-        _ring.Visible = true;
+        if (CombatSceneManager.Instance.IsCharacterTurn())
+        {
+            _ring.Visible = true;
+        }
     }
 
     private void OnMouseExited()
     {
-        _ring.Visible = false;
+        if (CombatSceneManager.Instance.IsCharacterTurn())
+        {
+            _ring.Visible = false;
+        }
     }
 
     private void OnInputEvent(Node viewport, InputEvent @event, int shapeIdx)
     {
-        if (@event is InputEventMouseButton mouseButtonEvent)
+        if (@event is InputEventMouseButton mouseButtonEvent && CombatSceneManager.Instance.IsCharacterTurn())
         {
             if (mouseButtonEvent.IsPressed())
             {

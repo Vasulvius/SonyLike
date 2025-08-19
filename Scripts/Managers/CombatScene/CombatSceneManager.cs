@@ -75,6 +75,11 @@ public partial class CombatSceneManager : Node
         }
     }
 
+    public bool IsCharacterTurn()
+    {
+        return _combatants[_currentCombatantIndex].IsInGroup("Character");
+    }
+
     public void Win()
     {
         GD.Print("All enemies have been defeated.");
