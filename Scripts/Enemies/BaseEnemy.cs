@@ -30,7 +30,8 @@ public partial class BaseEnemy : Node2D, IDamageable
 
 	public void Die()
 	{
-		GD.Print("Enemy has died.");
+		CombatSceneManager.Instance.RemoveCombatant(this);
+		QueueFree();
 	}
 
 	private Node SelectTarget()
@@ -49,7 +50,7 @@ public partial class BaseEnemy : Node2D, IDamageable
 	{
 		GD.Print("Enemy is acting.");
 		IDamageable target = SelectTarget() as IDamageable;
-		target.TakeDamage(10);
+		target.TakeDamage(20);
 		CombatSceneManager.Instance.HandleEndTurn();
 	}
 }

@@ -9,6 +9,7 @@ public partial class CombatSceneManager : Node
 
     // Combatants in the current scene
     public Godot.Collections.Array<Node> Characters = new Godot.Collections.Array<Node>();
+    public Godot.Collections.Array<Node> Enemies = new Godot.Collections.Array<Node>();
     private Godot.Collections.Array<Node> _combatants = new Godot.Collections.Array<Node>();
     private int _currentCombatantIndex = 0;
 
@@ -33,6 +34,7 @@ public partial class CombatSceneManager : Node
     {
         // Get all nodes in the "Character" and "Enemy" groups
         Characters = GetTree().GetNodesInGroup("Character");
+        Enemies = GetTree().GetNodesInGroup("Enemy");
         _combatants = GetTree().GetNodesInGroup("Character") + GetTree().GetNodesInGroup("Enemy");
 
         // TODO : Sort combatants regarding there stats
@@ -55,5 +57,31 @@ public partial class CombatSceneManager : Node
     public void HandleEndTurn()
     {
         SelectNextCombatant();
+    }
+
+    public void RemoveCombatant(Node combatant)
+    {
+        _combatants.Remove(combatant);
+        Characters.Remove(combatant);
+        Enemies.Remove(combatant);
+
+        if (Enemies.Count == 0)
+        {
+            Win();
+        }
+        else if (Characters.Count == 0)
+        {
+            Lose();
+        }
+    }
+
+    public void Win()
+    {
+        GD.Print("All enemies have been defeated.");
+    }
+
+    public void Lose()
+    {
+        GD.Print("All characters have been defeated.");
     }
 }

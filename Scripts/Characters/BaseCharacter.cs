@@ -33,6 +33,7 @@ public partial class BaseCharacter : Node2D, IDamageable
 
 	public void Die()
 	{
-		GD.Print("Character has died.");
+		CombatSceneManager.Instance.RemoveCombatant(this);
+		QueueFree();
 	}
 }
